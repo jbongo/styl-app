@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateDossierVentesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('dossier_ventes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('mandat_id')->unsigned()->unique();
+            $table->integer('notaire_id')->unsigned()->nullable();
+            $table->integer('offre_id')->unsigned()->nullable();
+            $table->boolean('compromis')->default(0);
+            $table->string('numero');
+            $table->boolean('notaire')->default(0);
+            $table->boolean('rendez_vous')->default(0);
+            $table->date('date_rdv')->nullable();
+            $table->boolean('vente_ok')->default(0);
+            $table->double('commission_finale')->nullable();
+            $table->boolean('archive')->default(0);
+            //$table->foreign('mandat_id')->references('id')->on('mandats');
+          //  $table->foreign('offre_id')->references('id')->on('offreachats');
+           // $table->foreign('notaire_id')->references('id')->on('notaire_associes');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('dossier_ventes');
+    }
+}

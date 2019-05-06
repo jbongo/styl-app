@@ -1,0 +1,9 @@
+/node_modules
+/vendor
+/storage
+/public/images/photos_bien
+/public/images/passerelles_xml
+/public/images/photo_profile
+/public/
+.env
+.env.copie
